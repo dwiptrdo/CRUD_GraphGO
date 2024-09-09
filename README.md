@@ -2,7 +2,7 @@
 
 <h1 align="center" >Welcome To CRUD GraphQL Golang</h1>
 
-> Program ini digunakan sebagai API
+> Program ini digunakan sebagai API untuk manajemen users menggunakan GraphQL dan Go.
 
 ## Requirement
 
@@ -19,6 +19,15 @@ cd CRUD_GraphGO
 
 ```
 
+Buat file .env di root proyek untuk konfigurasi database. Contoh isinya:
+```bash
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_NAME=postgres
+DB_PASSWORD=1234
+```
+
 Untuk menjalankan Programnya kamu hanya perlu menjalankan dengan command
 
 ```bash
@@ -29,20 +38,20 @@ go run main.go
 
 ```
 📦CRUD_GraphGO
-  ┣ 📂controller
-    ┗ 📜controller.go
-  ┣ 📂database
-    ┗ 📜database.go
-  ┣ 📂model
-    ┗ 📜model.go
-  ┣ 📂schema
-    ┣ 📜schema.go
-    ┗ 📜user.go
-  ┣ 📂utils
-    ┗ 📜util.go
-  ┣ 📜go.mod
-  ┣ 📜go.sum
-  ┗ 📜main.go
+ ┣ 📂controller   # Berisi logika untuk menangani request dan response
+ ┃ ┗ 📜controller.go
+ ┣ 📂database     # Koneksi ke database dan konfigurasi terkait
+ ┃ ┗ 📜database.go
+ ┣ 📂model        # Definisi struktur data atau model aplikasi
+ ┃ ┗ 📜model.go
+ ┣ 📂schema       # Definisi skema GraphQL
+ ┃ ┣ 📜schema.go
+ ┃ ┗ 📜user.go
+ ┣ 📂utils        # Fungsi-fungsi utilitas
+ ┃ ┗ 📜util.go
+ ┣ 📜go.mod       # File module Go
+ ┣ 📜go.sum       # File dependencies Go
+ ┗ 📜main.go      # Entry point aplikasi
 
 ```
 
