@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/graphql-go/handler"
+	"github.com/logrusorgru/aurora"
 )
 
 func main() {
@@ -20,6 +21,6 @@ func main() {
 	})
 
 	http.Handle("/graphql", h)
-	log.Println("Server berjalan di port 9122")
+	log.Println(aurora.Green("http://localhost:9122/graphql"))
 	log.Fatal(http.ListenAndServe(":9122", nil))
 }
