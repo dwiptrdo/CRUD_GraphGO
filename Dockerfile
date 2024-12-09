@@ -1,29 +1,17 @@
-# Stage 1: Build
-FROM golang:1.20-alpine AS builder
+# Menggunakan versi Go yang sesuai
+FROM golang:1.23 AS builder
 
-# Install dependencies tambahan jika diperlukan
-RUN apk add --no-cache git
-
-# Set working directory dalam container
+# Set direktori kerja
 WORKDIR /app
 
-# Copy semua file dari project ke dalam container
+# Copy semua file ke dalam container
 COPY . .
 
-# Install dependency dan build aplikasi
-RUN go mod tidy && go build -o main .
+# Unduh dependencies
+RUN go mod download
 
-# Stage 2: Runtime
-FROM alpine:latest
-
-# Set working directory
-WORKDIR /root/
-
-# Copy binary dari stage build
-COPY --from=builder /app/main .
-
-# Expose port yang akan digunakan
-EXPOSE 9122
+# Build aplikasi
+RUN go build -o main .
 
 # Jalankan aplikasi
 CMD ["./main"]
